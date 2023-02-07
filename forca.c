@@ -1,5 +1,4 @@
 #include "forca.h"
-int q;
 
 void Inicia_Forca(Forca* forc){
     int i,j;
@@ -72,3 +71,4 @@ void Perdeu(Forca* forc){
         printf("\n***** VOCE PERDEU *****\n");
     }
 }
+

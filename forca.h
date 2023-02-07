@@ -1,7 +1,16 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
+#include <time.h>
+#include <ctype.h>
 
+#define WORD 50
 #define TAM 7 
+#define FILME 21
+
+int q;
+char texto[20];
+int qual;
 
 typedef struct{
     char matriz[TAM][TAM];
