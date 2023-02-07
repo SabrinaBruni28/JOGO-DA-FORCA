@@ -6,11 +6,11 @@
 
 #define WORD 50
 #define TAM 7 
-#define FILME 21
 
 int q;
-char texto[20];
+char texto[50];
 int qual;
+char nome[20];
 
 typedef struct{
     char matriz[TAM][TAM];
@@ -19,4 +19,4 @@ typedef struct{
 void Inicia_Forca(Forca* forc);
 void Print_Forca(Forca* forc);
 void Adiciona_Corpinho(Forca* forc);
-void Perdeu(Forca* forc);
+int Perdeu(Forca* forc);

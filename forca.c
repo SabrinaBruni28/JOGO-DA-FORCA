@@ -20,14 +20,15 @@ void Inicia_Forca(Forca* forc){
 
 void Print_Forca(Forca* forc){
     int i,j;
-    printf("\n");
+    printf("\n\n");
+    printf("---- %s -----\n", nome);
     for(i=0;i<TAM;i++){
         for(j=0;j<TAM;j++){
             printf("%c ", forc->matriz[i][j]);
     }
         printf("\n");
     }
-    printf("\n\n");
+
 }
 
 void Adiciona_Corpinho(Forca* forc){
@@ -62,13 +63,14 @@ void Adiciona_Corpinho(Forca* forc){
     else if(q==7){
         forc->matriz[2][4] = '@'; // morreu
         q=0;
-        Perdeu(forc);
     }
 }
 
-void Perdeu(Forca* forc){
+int Perdeu(Forca* forc){
     if(forc->matriz[2][4] == '@'){
         printf("\n***** VOCE PERDEU *****\n");
+        return 1;
     }
+    return 0;
 }
 
