@@ -4,12 +4,11 @@
 
 int main(){
     Forca forc;
-    int i, j;
+    int i;
     Inicia_Forca(&forc);
     Print_Forca(&forc);
-    j=0;
     for(i=0;i<8;i++){
-        Adiciona(&forc, &j);
+        Adiciona_Corpinho(&forc);
         Print_Forca(&forc);
     }
     return 0;

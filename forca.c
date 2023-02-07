@@ -1,8 +1,9 @@
 #include "forca.h"
+int q;
 
 void Inicia_Forca(Forca* forc){
     int i,j;
-
+    q = 0;
     for(i=0;i<TAM;i++){
         for(j=0;j<TAM;j++){
                 forc->matriz[i][j] = ' ';
@@ -30,42 +31,40 @@ void Print_Forca(Forca* forc){
     printf("\n\n");
 }
 
-void Adiciona(Forca* forc, int* q){
-    if(*q==0){
+void Adiciona_Corpinho(Forca* forc){
+    if(q==0){
         forc->matriz[2][4] = 'O'; // cabeca
-        *q+=1;
+        q+=1;
     }
-    else if(*q==1){
+    else if(q==1){
         forc->matriz[3][4] = '|'; // corpo1
-        *q+=1;
+        q+=1;
     }
-    else if(*q==2){
+    else if(q==2){
         forc->matriz[4][4] = '|'; // corpo2
-        *q+=1;
+        q+=1;
     }
-    else if(*q==3){
+    else if(q==3){
         forc->matriz[3][3] = '/'; // braco esquerdo
-        *q+=1;
+        q+=1;
     }
-    else if(*q==4){
-        forc->matriz[3][5] = '/'; // braco direito
-        *q+=1;
+    else if(q==4){
+        forc->matriz[3][5] = '\\'; // braco direito
+        q+=1;
     }
-    else if(*q==5){
+    else if(q==5){
         forc->matriz[5][3] = '/'; // perna esquerda
-        *q+=1;
+        q+=1;
     }
-    else if(*q==6){
-        forc->matriz[5][5] = '/'; // perna direita
-        *q+=1;
+    else if(q==6){
+        forc->matriz[5][5] = '\\'; // perna direita
+        q+=1;
     }
-    else if(*q==7){
+    else if(q==7){
         forc->matriz[2][4] = '@'; // morreu
-        *q=0;
+        q=0;
         Perdeu(forc);
     }
-    
-
 }
 
 void Perdeu(Forca* forc){

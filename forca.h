@@ -9,5 +9,5 @@ typedef struct{
 
 void Inicia_Forca(Forca* forc);
 void Print_Forca(Forca* forc);
-void Adiciona(Forca* forc, int* q);
+void Adiciona_Corpinho(Forca* forc);
 void Perdeu(Forca* forc);
