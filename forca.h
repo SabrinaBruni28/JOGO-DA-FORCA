@@ -7,13 +7,11 @@
 #define WORD 50
 #define TAM 7 
 
-int q;
-char texto[50];
-int qual;
-char nome[20];
 
 typedef struct{
     char matriz[TAM][TAM];
+    int estado;
+    char nome[20];
 }Forca;
 
 void Inicia_Forca(Forca* forc);

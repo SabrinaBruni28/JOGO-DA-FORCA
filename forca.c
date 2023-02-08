@@ -2,7 +2,7 @@
 
 void Inicia_Forca(Forca* forc){
     int i,j;
-    q = 0;
+    forc->estado = 0;
     for(i=0;i<TAM;i++){
         for(j=0;j<TAM;j++){
                 forc->matriz[i][j] = ' ';
@@ -21,7 +21,7 @@ void Inicia_Forca(Forca* forc){
 void Print_Forca(Forca* forc){
     int i,j;
     printf("\n\n");
-    printf("---- %s -----\n", nome);
+    printf("---- %s -----\n", forc->nome);
     for(i=0;i<TAM;i++){
         for(j=0;j<TAM;j++){
             printf("%c ", forc->matriz[i][j]);
@@ -32,37 +32,37 @@ void Print_Forca(Forca* forc){
 }
 
 void Adiciona_Corpinho(Forca* forc){
-    if(q==0){
+    if(forc->estado==0){
         forc->matriz[2][4] = 'O'; // cabeca
-        q+=1;
+        forc->estado+=1;
     }
-    else if(q==1){
+    else if(forc->estado==1){
         forc->matriz[3][4] = '|'; // corpo1
-        q+=1;
+        forc->estado+=1;
     }
-    else if(q==2){
+    else if(forc->estado==2){
         forc->matriz[4][4] = '|'; // corpo2
-        q+=1;
+        forc->estado+=1;
     }
-    else if(q==3){
+    else if(forc->estado==3){
         forc->matriz[3][3] = '/'; // braco esquerdo
-        q+=1;
+        forc->estado+=1;
     }
-    else if(q==4){
+    else if(forc->estado==4){
         forc->matriz[3][5] = '\\'; // braco direito
-        q+=1;
+        forc->estado+=1;
     }
-    else if(q==5){
+    else if(forc->estado==5){
         forc->matriz[5][3] = '/'; // perna esquerda
-        q+=1;
+        forc->estado+=1;
     }
-    else if(q==6){
+    else if(forc->estado==6){
         forc->matriz[5][5] = '\\'; // perna direita
-        q+=1;
+        forc->estado+=1;
     }
-    else if(q==7){
+    else if(forc->estado==7){
         forc->matriz[2][4] = '@'; // morreu
-        q=0;
+        forc->estado=0;
     }
 }
 

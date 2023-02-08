@@ -1,4 +1,4 @@
-#include "palavra.h"
+#include "jogo.h"
 
 
 int Comeco(){
@@ -19,50 +19,59 @@ int Final(){
     printf("**********************************************************************************\n");
     return 0;
 }
+
+int Opcao(){
+    int i; 
+    printf("1- Letra  2- Palavra\n");
+    scanf("%d",&i);
+    return i+1;
+}
+
+
 int main(){
+    Jogo jog;
     Forca forc;
     Palavra palav;
-    int estado;
-    char letra;
-    char palavra1[WORD] = {"Melancia e bom"};
-    char palavra2[WORD];
-    scanf("%s",palavra2);
-    printf("%d\n", strcmp(palavra1, palavra2));
     FILE* arquivo;
-   /* estado = Comeco();
+    int estado;
+    char letra, palavra[WORD];
+    estado = Comeco();
     while(estado){
         switch (estado){
             case 1:
                 Inicia_Forca(&forc);
-                Inicializa_Arquivo(arquivo,&palav);
+                Inicializa_Arquivo(arquivo,&jog, &palav, &forc);
                 Print_Forca(&forc);
-                Print_Palavra(&palav);
-                estado = 3;
+                Print_Jogo(&jog);
+                estado = Opcao();
                 break;
             case 2:
                 getchar();
                 printf("# Escolha uma letra: ");
                 scanf("%c", &letra);
-                Tenta_Letra(&palav, &forc, letra);
-                if(Perdeu(&forc) || Ganhou(&palav)){
+                Tenta_Letra(&jog, &palav, &forc, letra);
+                if(Perdeu(&forc) || Ganhou(&jog)){
                     estado = 4;
-                    Revela_Palavra(&palav);
+                    Revela_Jogo(&jog, &palav);
                 }
                 Print_Forca(&forc);
-                Print_Palavra(&palav);
+                Print_Jogo(&jog);
+                if(estado!=4) estado = Opcao();
                 break;
             case 3:
-                //getchar();
+                getchar();
                 printf("# Qual e a Palavra: ");
-                scanf("%s", palavra);
-                if(Tenta_Palavra(&palav, palavra)) estado = 4;
+                fgets(palavra, WORD, stdin);
+                Elinima_Final(palavra);
+                if(Tenta_Jogo(&jog, &palav, palavra)) estado = 4;
                 Print_Forca(&forc);
-                Print_Palavra(&palav);
+                Print_Jogo(&jog);
+                if(estado!=4) estado = Opcao();
                 break;
             case 4:
                 estado = Final();
                 break;
         }
-    }*/
+    }
     return 0;
 }
