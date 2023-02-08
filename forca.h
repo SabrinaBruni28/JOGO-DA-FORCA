@@ -11,7 +11,7 @@
 typedef struct{
     char matriz[TAM][TAM];
     int estado;
-    char nome[20];
+    char tema[20];
 }Forca;
 
 void Inicia_Forca(Forca* forc);

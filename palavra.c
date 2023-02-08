@@ -2,41 +2,44 @@
 
 void Categoria(Palavra* palav, Forca* forc){
     int i;
-    printf("\n# Qual tema?\n");
-    printf("\n1- Filme  2- Animais  3- Objetos\n4- Series  5- Frutas  6- Vegetais\n");
+    getchar();
+    printf("\n\033[1;4m# Qual tema?\n\033[m");
+    printf("\n\033[1m1- Filme  2- Animais  3- Objetos\n4- Series  5- Frutas  6- Vegetais\n\033[m");
     scanf("%d",&i);
     switch (i){
         case 1:
             strcpy(palav->texto,"Categorias/filmes.txt");
             palav->tamanho = FILME;
-            strcpy(forc->nome, "FILME");
+            strcpy(forc->tema, "FILME");
             break;
         case 2:
             strcpy(palav->texto,"Categorias/animais.txt");
             palav->tamanho = ANIMAIS;
-            strcpy(forc->nome, "ANIMAIS");
+            strcpy(forc->tema, "ANIMAIS");
             break;
         case 3:
             strcpy(palav->texto,"Categorias/objetos.txt");
             palav->tamanho = OBJETOS;
-            strcpy(forc->nome, "OBJETOS");
+            strcpy(forc->tema, "OBJETOS");
             break;
         case 4:
             strcpy(palav->texto,"Categorias/series.txt");
             palav->tamanho = SERIES;
-            strcpy(forc->nome, "SERIES");
+            strcpy(forc->tema, "SERIES");
             break;
         case 5:
             strcpy(palav->texto,"Categorias/frutas.txt");
             palav->tamanho = FRUTAS;
-            strcpy(forc->nome, "FRUTAS");
+            strcpy(forc->tema, "FRUTAS");
             break;
         case 6:
             strcpy(palav->texto,"Categorias/vegetais.txt");
             palav->tamanho = VEGETAIS;
-            strcpy(forc->nome, "VEGETAIS");
+            strcpy(forc->tema, "VEGETAIS");
             break;
         default:
+             printf("\n\033[1;31mDigite um numero valido nas opcoes\n\033[m");
+             Categoria(palav, forc);
             break;
     }
 }
@@ -58,7 +61,6 @@ void Sorteia_Palavra(FILE* arquivo, Palavra* palav){
     fflush(arquivo);
     while(cont < numero){
         fgets(string,WORD, arquivo);
-        //fscanf(arquivo, "%s ", string);
         cont++;
     }
     Elinima_Final(string);

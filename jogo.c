@@ -4,10 +4,14 @@
 int Inicializa_Arquivo(FILE* arquivo, Jogo* jog, Palavra* palav, Forca* forc){
     Categoria(palav, forc);
     arquivo = fopen(palav->texto, "r");
-    if(arquivo == NULL) return 0;
+    if(arquivo == NULL){
+        printf("\033[1;31m**** FALHA AO ABRIR ARQUIVO ****\n\033[m");
+        return 0;
+    }
     Sorteia_Palavra(arquivo,palav);
     Inicializa_Tracinho(jog, palav);
     fclose(arquivo);
+    return 1;
 }
 
 void Inicializa_Letras(Jogo* jog){
@@ -44,14 +48,13 @@ void Adiciona_Letra(Jogo* jog, char letra){
     }
 }
 
-
 void Print_Jogo(Jogo* jog){
     int i;
-    printf("\t%s \n\n", jog->tracinho);
-    printf("Letras Ja Escolhidas: ");
+    printf("\033[1;37m\t%s \n\n\033[m", jog->tracinho);
+    printf("\033[1;33mLetras Ja Escolhidas: \033[m");
     for(i=0; i<strlen(jog->letras);i++){
-        if(i==strlen(jog->letras)-1) printf("%c", jog->letras[i]);
-        else printf("%c - ", jog->letras[i]);
+        if(i==strlen(jog->letras)-1) printf("\033[1m%c\033[m", jog->letras[i]);
+        else printf("\033[1m%c - \033[m", jog->letras[i]);
     }
     printf("\n\n");
 }
@@ -61,7 +64,7 @@ int Tenta_Letra(Jogo* jog, Palavra* palav, Forca* forc, char letra){
     if((Ja_foi_Letra(jog, letra)) && (Existe_Letra(jog, palav, letra))){
         if(Letra_ja_Aberta(jog, letra)){
             Adiciona_Letra(jog, letra);
-            printf("\n****** NAO POSSUI A LETRA %c ******\n", letra);
+            printf("\n\033[1;31m****** NAO POSSUI A LETRA %c ******\n\033[m", letra);
             Adiciona_Corpinho(forc);
         }
         return 1;
@@ -75,7 +78,7 @@ int Tenta_Jogo(Jogo* jog, Palavra* palav, char* string){
         Ganhou(jog);
         return 1;
     }
-    else printf("\nVOCE ERROU !!!\n");
+    else printf("\n\033[1;31m**** VOCE ERROU !!! ****\033[m\n");
     return 0;
 }
 void Revela_Letra(Jogo* jog, Palavra* palav, int i){
@@ -92,7 +95,7 @@ int Ja_foi_Letra(Jogo* jog, char letra){
         if(toupper(jog->letras[i]) == toupper(letra)) cont++;
     }
     if(cont==0) return 1;
-    printf("\n****** LETRA JA ESCOLHIDA !!! *******\n");
+    printf("\n\033[1;31m****** LETRA JA ESCOLHIDA !!! *******\033[m\n");
     return 0;
 }
 
@@ -102,7 +105,7 @@ int Letra_ja_Aberta(Jogo* jog, char letra){
         if(toupper(jog->tracinho[i]) == toupper(letra)) cont++;
     }
     if(cont==0) return 1;
-    printf("\n****** LETRA JA ABERTA !!! ******\n");
+    printf("\n\033[1;31m****** LETRA JA ABERTA !!! ******\n\033[m");
     return 0;
 }
 
@@ -112,7 +115,7 @@ int Ganhou(Jogo* jog){
         if(jog->tracinho[i] != '-') cont++;
     }
     if(cont == strlen(jog->tracinho)) {
-        printf("\n****** VOCE GANHOU !!!! *****\n");
+        printf("\n\033[1;32m****** VOCE GANHOU !!!! *****\033[m\n");
         return 1;
     }
     return 0;

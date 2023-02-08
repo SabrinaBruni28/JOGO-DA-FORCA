@@ -21,11 +21,14 @@ void Inicia_Forca(Forca* forc){
 void Print_Forca(Forca* forc){
     int i,j;
     printf("\n\n");
-    printf("---- %s -----\n", forc->nome);
+    printf("\033[1;35m----\033[m \033[1;4m%s\033[m \033[1;35m-----\n\033[m", forc->tema);
     for(i=0;i<TAM;i++){
         for(j=0;j<TAM;j++){
-            printf("%c ", forc->matriz[i][j]);
-    }
+            if(forc->matriz[i][j] == '@') printf("\033[1;31m%c \033[m", forc->matriz[i][j]);
+            else if(forc->matriz[i][j] == '_' || forc->matriz[i][j] == '|' && j==0 || j==4 && i==1) printf("\033[1;34m%c \033[m", forc->matriz[i][j]);
+            else if(forc->matriz[i][j] == 'O' || forc->matriz[i][j] == '/' || forc->matriz[i][j] == '\\' || forc->matriz[i][j] == '|') printf("\033[1m%c \033[m", forc->matriz[i][j]);
+            else  printf("%c ", forc->matriz[i][j]);
+        }
         printf("\n");
     }
 
@@ -68,7 +71,7 @@ void Adiciona_Corpinho(Forca* forc){
 
 int Perdeu(Forca* forc){
     if(forc->matriz[2][4] == '@'){
-        printf("\n***** VOCE PERDEU *****\n");
+        printf("\n\033[1;31m***** VOCE PERDEU *****\033[m\n");
         return 1;
     }
     return 0;
