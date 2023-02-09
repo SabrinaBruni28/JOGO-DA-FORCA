@@ -3,7 +3,7 @@
 #define FILME 80
 #define ANIMAIS 80
 #define OBJETOS 21
-#define FRUTAS_VEGETAIS 21
+#define FRUTAS_VEGETAIS 80
 #define SERIES 80
 
 typedef struct{
