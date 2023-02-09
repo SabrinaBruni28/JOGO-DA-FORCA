@@ -19,3 +19,9 @@ Espelho
 Prato
 Fogao
 Mesa
+Celular
+Chinelo
+Sapato
+Cama
+Bolsa
+Guarda Roupa

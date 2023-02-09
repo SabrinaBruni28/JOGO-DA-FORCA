@@ -4,7 +4,7 @@ void Categoria(Palavra* palav, Forca* forc){
     int i;
     getchar();
     printf("\n\033[1;4m# Qual tema?\n\033[m");
-    printf("\n\033[1m1- Filme  2- Animais  3- Objetos\n4- Series  5- Frutas  6- Vegetais\n\033[m");
+    printf("\n\033[1m1- Filme  2- Animais  3- Objetos\n4- Series  5- Frutas e Vegetais\n\033[m");
     scanf("%d",&i);
     switch (i){
         case 1:
@@ -28,14 +28,9 @@ void Categoria(Palavra* palav, Forca* forc){
             strcpy(forc->tema, "SERIES");
             break;
         case 5:
-            strcpy(palav->texto,"Categorias/frutas.txt");
-            palav->tamanho = FRUTAS;
-            strcpy(forc->tema, "FRUTAS");
-            break;
-        case 6:
-            strcpy(palav->texto,"Categorias/vegetais.txt");
-            palav->tamanho = VEGETAIS;
-            strcpy(forc->tema, "VEGETAIS");
+            strcpy(palav->texto,"Categorias/frutas_vegetais.txt");
+            palav->tamanho = FRUTAS_VEGETAIS;
+            strcpy(forc->tema, "FRUTAS e VEGETAIS");
             break;
         default:
              printf("\n\033[1;31mDigite um numero valido nas opcoes\n\033[m");
@@ -74,13 +69,24 @@ void Elinima_Final(char*  vetor){
             vetor[i]='\0';
 }
 
+char* Toupper_Vetor(char* string, int tam){
+    int i;
+    //char* resultado=(char*)calloc(46,sizeof(char));
+    char* vetor= (char*)malloc(sizeof(int)*tam);
+    strcpy(vetor, string);
+    for(i=0;i<tam;i++){
+        vetor[i] = toupper(string[i]);
+    }
+    return vetor;
+}
 
 int Palavra_Certa(Palavra* palav, char* string){
     int i;
-    for(i=0; i<strlen(palav->palavra); i++){
-        if(palav->palavra[i] != string[i]) return 0;
-    }
-    return 1;
+    //for(i=0; i<strlen(palav->palavra); i++){
+       // if(palav->palavra[i] != string[i]) return 0;
+    //}
+    if(strcmp(Toupper_Vetor(palav->palavra, strlen(palav->palavra)), Toupper_Vetor(string, strlen(string))) == 0) return 1;
+    return 0;
 }
 
 

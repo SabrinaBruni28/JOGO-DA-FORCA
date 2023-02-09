@@ -61,14 +61,15 @@ void Print_Jogo(Jogo* jog){
 
 
 int Tenta_Letra(Jogo* jog, Palavra* palav, Forca* forc, char letra){
-    if((Ja_foi_Letra(jog, letra)) && (Existe_Letra(jog, palav, letra))){
-        if(Letra_ja_Aberta(jog, letra)){
+    if(Ja_foi_Letra(jog, letra)){
+        if(Letra_ja_Aberta(jog, letra) && Existe_Letra(jog, palav, letra)){
             Adiciona_Letra(jog, letra);
             printf("\n\033[1;31m****** NAO POSSUI A LETRA %c ******\n\033[m", letra);
             Adiciona_Corpinho(forc);
         }
         return 1;
     }
+    else Letra_ja_Aberta(jog, letra);
     return 0;
 }
  
