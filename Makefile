@@ -1,3 +1,3 @@
 make all:
-	gcc main.c forca.c palavra.c jogo.c -o run
+	gcc main.c Forca/forca.c Palavra/palavra.c Jogo/jogo.c -o run
 	./run

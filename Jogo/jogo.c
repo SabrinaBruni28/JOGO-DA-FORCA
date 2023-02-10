@@ -34,7 +34,6 @@ void Inicializa_Tracinho(Jogo* jog, Palavra* palav){
         else 
             jog->tracinho[i] = '-';
     }
-    Elinima_Final(palav->palavra);
     Elinima_Final(jog->tracinho);
     Inicializa_Letras(jog);
 }
@@ -69,11 +68,11 @@ int Tenta_Letra(Jogo* jog, Palavra* palav, Forca* forc, char letra){
         }
         return 1;
     }
-    else Letra_ja_Aberta(jog, letra);
     return 0;
 }
  
 int Tenta_Jogo(Jogo* jog, Palavra* palav, char* string){
+    Elinima_Final(string);
     if(Palavra_Certa(palav, string)){
         Revela_Jogo(jog, palav);
         Ganhou(jog);
@@ -91,23 +90,26 @@ void Revela_Jogo(Jogo* jog, Palavra* palav){
 }
 
 int Ja_foi_Letra(Jogo* jog, char letra){
-    int i, cont=0;
+    int i;
     for(i=0; i<strlen(jog->letras); i++){
-        if(toupper(jog->letras[i]) == toupper(letra)) cont++;
+        if(toupper(jog->letras[i]) == toupper(letra)){
+            printf("\n\033[1;31m****** LETRA JA ESCOLHIDA !!! *******\033[m\n");
+            return 0;
+        }
     }
-    if(cont==0) return 1;
-    printf("\n\033[1;31m****** LETRA JA ESCOLHIDA !!! *******\033[m\n");
-    return 0;
+    return 1;
 }
 
 int Letra_ja_Aberta(Jogo* jog, char letra){
-    int i, cont=0;
+    int i;
     for(i=0; i<strlen(jog->tracinho); i++){
-        if(toupper(jog->tracinho[i]) == toupper(letra)) cont++;
+        if(toupper(jog->tracinho[i]) == toupper(letra)){
+            printf("\n\033[1;31m****** LETRA JA ABERTA !!! ******\n\033[m");
+            return 0;
+        } 
     }
-    if(cont==0) return 1;
-    printf("\n\033[1;31m****** LETRA JA ABERTA !!! ******\n\033[m");
-    return 0;
+    return 1;
+    
 }
 
 int Ganhou(Jogo* jog){

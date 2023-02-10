@@ -39,7 +39,7 @@ void Categoria(Palavra* palav, Forca* forc){
     }
 }
 
-void Inicializa_Palavra(Palavra* palav){
+void Zera_Palavra(Palavra* palav){
     int i;
     for(i=0; i<WORD; i++)
         palav->palavra[i] = '\0';
@@ -48,7 +48,7 @@ void Inicializa_Palavra(Palavra* palav){
 void Sorteia_Palavra(FILE* arquivo, Palavra* palav){
     int numero=0, cont=0;
     char string[WORD];
-    Inicializa_Palavra(palav);
+    Zera_Palavra(palav);
     srand( (unsigned)time(NULL) );
     while(numero==0){
         numero = rand()%palav->tamanho;
@@ -71,7 +71,6 @@ void Elinima_Final(char*  vetor){
 
 char* Toupper_Vetor(char* string, int tam){
     int i;
-    //char* resultado=(char*)calloc(46,sizeof(char));
     char* vetor= (char*)malloc(sizeof(int)*tam);
     strcpy(vetor, string);
     for(i=0;i<tam;i++){
@@ -82,9 +81,6 @@ char* Toupper_Vetor(char* string, int tam){
 
 int Palavra_Certa(Palavra* palav, char* string){
     int i;
-    //for(i=0; i<strlen(palav->palavra); i++){
-       // if(palav->palavra[i] != string[i]) return 0;
-    //}
     if(strcmp(Toupper_Vetor(palav->palavra, strlen(palav->palavra)), Toupper_Vetor(string, strlen(string))) == 0) return 1;
     return 0;
 }
