@@ -27,7 +27,7 @@ int Tenta_Letra(Jogo* jog, Palavra* palav, Forca* forc,char letra);
 /*Funcao em que o usuario tenta adivinha a palavra direto.
   Coferindo se a palavra e a certa ou nao.
   Retorna 1 caso seja a palavra certa e 0 caso nao seja.*/
-int Tenta_Jogo(Jogo* jog, Palavra* palav, char* string);
+int Tenta_Jogo(Jogo* jog, Palavra* palav, char* string, Forca* forc);
 /*Funcao que iguala o tracinho de uma posicao a palavra.
   Revelando a letra.*/
 void Revela_Letra(Jogo* jog, Palavra* palav, int i);

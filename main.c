@@ -84,7 +84,7 @@ int main(){
                 getchar();
                 printf("\033[1;4;37m# Qual e a Palavra: \033[m");
                 fgets(palavra, WORD, stdin);
-                if(Tenta_Jogo(&jog, &palav, palavra)) estado = 4;
+                if(Tenta_Jogo(&jog, &palav, palavra, &forc)) estado = 4;
                 Print_Forca(&forc);
                 Print_Jogo(&jog);
                 if(estado!=4) estado = Opcao();

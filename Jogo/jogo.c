@@ -71,7 +71,7 @@ int Tenta_Letra(Jogo* jog, Palavra* palav, Forca* forc, char letra){
     return 0;
 }
  
-int Tenta_Jogo(Jogo* jog, Palavra* palav, char* string){
+int Tenta_Jogo(Jogo* jog, Palavra* palav, char* string, Forca* forc){
     Elinima_Final(string);
     if(Palavra_Certa(palav, string)){
         Revela_Jogo(jog, palav);
@@ -79,6 +79,7 @@ int Tenta_Jogo(Jogo* jog, Palavra* palav, char* string){
         return 1;
     }
     else printf("\n\033[1;31m**** VOCE ERROU !!! ****\033[m\n");
+    Adiciona_Corpinho(forc);
     return 0;
 }
 void Revela_Letra(Jogo* jog, Palavra* palav, int i){
