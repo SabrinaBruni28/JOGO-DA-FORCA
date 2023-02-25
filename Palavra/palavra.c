@@ -71,7 +71,7 @@ void Elinima_Final(char*  vetor){
 
 char* Toupper_Vetor(char* string, int tam){
     int i;
-    char* vetor= (char*)malloc(sizeof(int)*tam);
+    char* vetor= (char*)malloc(sizeof(char)*tam);
     strcpy(vetor, string);
     for(i=0;i<tam;i++){
         vetor[i] = toupper(string[i]);
