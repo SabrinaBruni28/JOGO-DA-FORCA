@@ -3,7 +3,7 @@
 /*Quantidade de palavras no arquivo de cada categoria.*/
 #define FILME 80
 #define ANIMAIS 80
-#define OBJETOS 21
+#define OBJETOS 60
 #define FRUTAS_VEGETAIS 80
 #define SERIES 80
 

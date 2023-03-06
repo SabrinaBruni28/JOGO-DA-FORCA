@@ -25,3 +25,36 @@ Sapato
 Cama
 Bolsa
 Guarda Roupa
+Folha
+Notebook
+Regua
+Panela
+Vaso
+Pia
+Torneira
+Fone de Ouvido
+Boneca
+Urso de Pelucia
+Controle
+Bolsa
+Mochila
+Quadro
+Chuveiro
+Livro
+Travesseiro
+Gaveta
+Carregador
+Chave
+Almofada
+Maquina de Lavar
+Faca
+Talheres
+Tesoura
+Garfo
+Colher
+Apontador
+Gaiola
+Mala
+Capinha
+Ferramenta
+Pote
