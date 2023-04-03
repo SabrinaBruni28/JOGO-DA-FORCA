@@ -62,7 +62,7 @@ Formiga
 Gafanhoto
 Grilo
 Borboleta
-Louva_Deus
+Louva Deus
 Mariposa
 Besouro
 Sapo
@@ -71,10 +71,10 @@ Barata
 Chimpanze
 Jabuti
 Pomba
-Estrela_do_Mar
+Estrela do Mar
 Cavalo
-Cavalo_Marinho
+Cavalo Marinho
 Burro
 Jumento
 Piolho de Cobra
-Leao_Marinho
+Leao Marinho
